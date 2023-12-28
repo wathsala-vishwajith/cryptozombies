@@ -11,8 +11,11 @@ contract ZombieFactory {
         string name;
         uint dna;
     }
-    //arrays
-    Zombie[] public zombies;
+    //arrays 
+    //static  array
+    //Zombie[3] array
+    //dynamic array
+    Zombie[] public zombies; 
 
     //memory -> for storing the _name in the memory
     //private/public -> make functions private or public
