@@ -23,6 +23,7 @@ contract ZombieFactory {
         string name;
         uint dna;
     }
+
     //arrays
     //static  array
     //Zombie[3] array
@@ -45,6 +46,14 @@ contract ZombieFactory {
     //private/public -> make functions private or public
     function _createZombie(string memory _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
+
+        //msg.sender -> global variable that is availible to all the functions
+        //msg.sender = address of the person/smart contract who called the function.
+
+        //save a key value on the mapping
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+
         emit NewZombie(id, _name, _dna);
     }
 
