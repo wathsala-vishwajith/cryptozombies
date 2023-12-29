@@ -1,6 +1,18 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 contract ZombieFactory {
+    //Events are a way for your contract to communicate that something happened on the blockchain to your app front-end,
+    // which can be 'listening' for certain events and take action when they happen.
+    //  // declare the event
+    // event IntegersAdded(uint x, uint y, uint result);
+
+    // function add(uint _x, uint _y) public returns (uint) {
+    //   uint result = _x + _y;
+    //   // fire an event to let the app know the function was called:
+    //   emit IntegersAdded(_x, _y, result);
+    //   return result;
+    // }
+
     //events are fired to the frontend
     event NewZombie(uint zombieId, string name, uint dna);
 
@@ -11,11 +23,11 @@ contract ZombieFactory {
         string name;
         uint dna;
     }
-    //arrays 
+    //arrays
     //static  array
     //Zombie[3] array
     //dynamic array
-    Zombie[] public zombies; 
+    Zombie[] public zombies;
 
     //memory -> for storing the _name in the memory
     //private/public -> make functions private or public
@@ -24,14 +36,15 @@ contract ZombieFactory {
         emit NewZombie(id, _name, _dna);
     }
 
-    
     //Solidity also contains pure functions, which means you're not even accessing any data in the app.
     // function _multiply(uint a, uint b) private pure returns (uint) {
     //    return a * b;
     // }
     //
     //view -> viewing the data not modifying them.
-    function _generateRandomDna(string memory _str) private view returns (uint) {
+    function _generateRandomDna(
+        string memory _str
+    ) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
     }
@@ -40,5 +53,4 @@ contract ZombieFactory {
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
-
 }
