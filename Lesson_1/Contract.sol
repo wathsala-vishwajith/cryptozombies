@@ -29,6 +29,18 @@ contract ZombieFactory {
     //dynamic array
     Zombie[] public zombies;
 
+    //mapping
+    //A mapping is essentially a key-value store for storing and looking up data.
+    // // For a financial app, storing a uint that holds the user's account balance:
+    // mapping (address => uint) public accountBalance;
+    // //Or could be used to store / lookup usernames based on userId
+    // mapping (uint => string) userIdToName;
+
+    //maps uint(key) to address(value)
+    mapping(uint => address) public zombieToOwner;
+    //maps address(key) to uint(value)
+    mapping(address => uint) ownerZombieCount;
+
     //memory -> for storing the _name in the memory
     //private/public -> make functions private or public
     function _createZombie(string memory _name, uint _dna) private {
