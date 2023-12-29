@@ -71,6 +71,9 @@ contract ZombieFactory {
     }
 
     function createRandomZombie(string memory _name) public {
+        //require makes it so that the function will throw an error and
+        // stop executing if some condition is not true
+        require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
