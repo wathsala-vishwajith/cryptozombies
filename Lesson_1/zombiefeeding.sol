@@ -5,5 +5,9 @@ import "./zombiefactory.sol";
 
 // contract inheritance
 contract ZombieFeeding is ZombieFactory {
-
+    //storage vs memory
+    //storage - permenent storage on the blockchain
+    //memory - temporary variables
+    //by default,
+    //variable declared outside of the functions - va
 }
